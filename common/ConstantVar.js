@@ -9,11 +9,11 @@ var HTTPS_API_URL = 'https://openapi.youdao.com/openapi';
 var APP_KEY = '';
 
 // 十六进制字符串形式转换代码
-var HEX_CODE = {'0', '1', '2', '3'
+var HEX_CODE = ['0', '1', '2', '3'
                 , '4', '5', '6', '7'
                 , '8', '9', 'A', 'B'
                 , 'C', 'D', 'E', 'F'
-};
+];
 
 // 地址编码语言
 var URL_CODE = 'UTF-8';
@@ -63,6 +63,8 @@ var REQUEST_TEXT = {
     , salt: ''
     // appKey+q+salt的MD5值
     , sign: ''
+    // 
+    , signType: ''
 };
 
 // 返回报文JSON串

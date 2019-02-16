@@ -3,4 +3,6 @@
  */
 $(function(){
     // 下拉框初始化
+
+    visitAPI('AAAAAAAAAAAAAAAAAA');
 });
