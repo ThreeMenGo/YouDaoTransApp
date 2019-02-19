@@ -46,7 +46,6 @@ function generateRequireText(){
     return requireText;
 }
 
-
 /**
  * 调用接口API获取返回值报文
  * @param {String} requireText 
