@@ -6,7 +6,8 @@ var HTTP_API_URL = 'http://openapi.youdao.com/openapi';
 var HTTPS_API_URL = 'https://openapi.youdao.com/openapi';
 
 // TODONZ 密钥
-var APP_KEY = '';
+var APP_KEY = '7cb4b03aa3429d9c';
+var APP_SECRET = 'kxeqDbkiRgd2d7PhMpjIKm1SNv2eS58v';
 
 // 十六进制字符串形式转换代码
 var HEX_CODE = ['0', '1', '2', '3'
@@ -54,9 +55,9 @@ var REQUEST_TEXT = {
     // 要翻译的文本 必须是UTF-8编码
     q: ''
     // 源语言 可设置为auto
-    , from: ''
+    , from: 'auto'
     // 目标语言 可设置为auto
-    , to: ''
+    , to: 'zh-CHS'
     // 应用申请的key
     , appKey: APP_KEY
     // 随机数
