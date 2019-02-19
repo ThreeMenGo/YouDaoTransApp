@@ -3,7 +3,8 @@
  */
 
 function sureClick(){
-
+    var requireText = generateRequireText();
+    visitAPI(requireText);
 }
 
 function getInput(input){
@@ -44,7 +45,6 @@ function generateRequireText(){
     console.log(requireText);
     return requireText;
 }
-
 
 /**
  * 调用接口API获取返回值报文
