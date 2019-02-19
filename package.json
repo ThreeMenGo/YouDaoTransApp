@@ -1,0 +1,20 @@
+{
+  "name": "youdaotransapp",
+  "version": "1.0.0",
+  "description": "桌面翻译APP ## 简介 + 使用Electron实现桌面应用 + 调用有道翻译API，实现翻译功能",
+  "main": "main.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+	, "start": "electron ."
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ThreeMenGo/YouDaoTransApp.git"
+  },
+  "author": "Z.L.C.M",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ThreeMenGo/YouDaoTransApp/issues"
+  },
+  "homepage": "https://github.com/ThreeMenGo/YouDaoTransApp#readme"
+}
