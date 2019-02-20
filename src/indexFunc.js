@@ -59,7 +59,7 @@ function visitAPI(requireText) {
         , dataType: 'jsonp'
         , success: function (result) {
             console.log('返回结果'+result);
-            showInPage(reslut);
+            showInPage(result);
         }
     });
 }
