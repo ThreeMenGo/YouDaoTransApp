@@ -4,8 +4,8 @@
   "description": "桌面翻译APP ## 简介 + 使用Electron实现桌面应用 + 调用有道翻译API，实现翻译功能",
   "main": "main.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-	, "start": "electron ."
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "electron ."
   },
   "repository": {
     "type": "git",
@@ -16,5 +16,8 @@
   "bugs": {
     "url": "https://github.com/ThreeMenGo/YouDaoTransApp/issues"
   },
-  "homepage": "https://github.com/ThreeMenGo/YouDaoTransApp#readme"
+  "homepage": "https://github.com/ThreeMenGo/YouDaoTransApp#readme",
+  "dependencies": {
+    "js-sha256": "^0.9.0"
+  }
 }

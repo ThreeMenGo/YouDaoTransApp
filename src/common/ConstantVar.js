@@ -16,6 +16,9 @@ var HEX_CODE = ['0', '1', '2', '3'
                 , 'C', 'D', 'E', 'F'
 ];
 
+// 时间
+var DATE_LONG = new Date().getTime();
+
 // 地址编码语言
 var URL_CODE = 'UTF-8';
 
@@ -24,7 +27,7 @@ var LANGUAGE_CODE = [
     {code: 'auto', name: '自动检测'}
     , {code: 'zh_CHS', name: '中文'}
     , {code: 'ja', name: '日文'}
-    , {code: 'EN', name: '英文'}
+    , {code: 'en', name: '英文'}
     , {code: 'ko', name: '韩文'}
     , {code: 'fr', name: '法文'}
     , {code: 'ar', name: '阿拉伯文'}
@@ -51,7 +54,7 @@ var LANGUAGE_CODE = [
 ];
 
 // 请求报文JSON串
-var REQUEST_TEXT = {
+var REQUEST_JSON = {
     // 要翻译的文本 必须是UTF-8编码
     q: ''
     // 源语言 可设置为auto
@@ -62,14 +65,13 @@ var REQUEST_TEXT = {
     , appKey: APP_KEY
     // 随机数
     , salt: ''
-    // appKey+q+salt的MD5值
     , sign: ''
-    // 
-    , signType: ''
+    , signType: 'v3'
+    , curtime: ''
 };
 
 // 返回报文JSON串
-var RESPONSE_TEXT = {
+var RESPONSE_OBJ = {
     // 错误返回码
     errorCode: ''
     // 源文本

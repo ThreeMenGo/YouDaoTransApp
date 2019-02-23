@@ -3,6 +3,10 @@
  */
 $(function(){
     // 下拉框初始化
-
-    visitAPI('AAAAAAAAAAAAAAAAAA');
+    var str = '';
+    LANGUAGE_CODE.forEach(element => {
+        str += '<option value="'+element.code+'">'+element.name+'</option>';
+    });
+    $('#selectSource').html(str);
+    $('#selectTrans').html(str);
 });

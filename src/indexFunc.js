@@ -1,10 +1,19 @@
+var sha256 = require('js-sha256');
+
 /**
  * 首页调用到的相关方法
  */
 
 function sureClick(){
-    var requireText = generateRequireText();
-    visitAPI(requireText);
+    var inputObj = {};
+    // 以下三个参数需要从页面获取, 没有的话使用默认值
+    // 多个query可以用\n连接  如 query='apple\norange\nbanana\npear'
+    inputObj.sourceType = $('#selectSource option:selected').val();
+    inputObj.transType = $('#selectTrans option:selected').val();
+    inputObj.sourceText = $('#textareaSourceText').val();
+
+    var requireObj = generateRequireText(inputObj);
+    visitAPI(requireObj);
 }
 
 function getInput(input){
@@ -23,42 +32,43 @@ function getInput(input){
 	return result;
 }
 
-
 /**
  * 获取页面参数, 生成请求报文
+ * @param{JSON} inputObj
  */
-function generateRequireText(){
+function generateRequireText(inputObj){
+    var query = inputObj.sourceText;
+    var from = inputObj.sourceType;
+    var to = inputObj.transType;
     var date = new Date().getTime();
-    var appKey = APP_KEY;
-    var key = APP_SECRET;
-    var salt = date;
-    var curtime = Math.round(date/1000);
-    
-    // 以下三个参数需要从页面获取, 没有的话使用默认值
-    // 多个query可以用\n连接  如 query='apple\norange\nbanana\npear'
-    var query = 'good';
-    var from = 'auto';
-    var to = 'zh-CHS';
-
-    var requireText = appKey + getInput(query) + salt + curtime +key;
+    var requireText = APP_KEY 
+                    + getInput(query) 
+                    + date 
+                    + Math.round(date/1000) 
+                    + APP_SECRET;
     var sign = sha256(requireText);
-    console.log(requireText);
-    return requireText;
+
+    REQUEST_JSON.q = query;
+    REQUEST_JSON.from = from;
+    REQUEST_JSON.to = to;
+    REQUEST_JSON.sign = sign;
+    REQUEST_JSON.salt = date;
+    REQUEST_JSON.sign = sign;
+    return REQUEST_JSON;
 }
 
 /**
  * 调用接口API获取返回值报文
- * @param {String} requireText 
+ * @param {String} requireObj 
  */
-function visitAPI(requireText) {
-    console.log('获取到的请求文本为:'+requireText);
+function visitAPI(requireObj) {
+    console.log(JSON.stringify(requireObj))
     $.ajax({
         url: API_URL
-        , data: requireText
-        , type: 'GET'
+        , data: requireObj
+        , type: 'POST'
         , dataType: 'jsonp'
         , success: function (result) {
-            console.log('返回结果'+result);
             showInPage(result);
         }
     });
@@ -66,8 +76,9 @@ function visitAPI(requireText) {
 
 /**
  * 用于将结果显示在页面上
- * @param {JSON} jsonObj 
+ * @param {JSON} responseObj 
  */
-function showInPage(jsonObj) {
-
+function showInPage(responseObj) {
+    console.log(JSON.stringify(responseObj));
+    $('#textareaTransText').val(responseObj.translation);
 }
