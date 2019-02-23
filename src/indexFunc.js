@@ -3,7 +3,6 @@ var sha256 = require('js-sha256');
 /**
  * 首页调用到的相关方法
  */
-
 function sureClick(){
     var inputObj = {};
     // 以下三个参数需要从页面获取, 没有的话使用默认值
@@ -48,7 +47,6 @@ function generateRequireText(inputObj){
                     + salt
                     + curtime 
                     + APP_SECRET;
-    console.log(requireText);
     var sign = sha256(requireText);
     
     REQUEST_JSON.q = query;
@@ -58,7 +56,6 @@ function generateRequireText(inputObj){
     REQUEST_JSON.salt = salt;
     REQUEST_JSON.sign = sign;
     REQUEST_JSON.curtime = curtime;
-    REQUEST_JSON.appKey = APP_KEY;
     return REQUEST_JSON;
 }
 
@@ -67,8 +64,6 @@ function generateRequireText(inputObj){
  * @param {String} requireObj 
  */
 function visitAPI(requireObj) {
-    console.log(JSON.stringify(requireObj))
-    console.log(API_URL);
     $.ajax({
         url: API_URL
         , data: requireObj
@@ -85,6 +80,5 @@ function visitAPI(requireObj) {
  * @param {JSON} responseObj 
  */
 function showInPage(responseObj) {
-    console.log(JSON.stringify(responseObj));
     $('#textareaTransText').val(responseObj.translation);
 }
