@@ -30,6 +30,7 @@ function getInput(input){
 		result = startStr + len +endStr;
 	}
 	return result;
+
 }
 
 /**
@@ -40,20 +41,24 @@ function generateRequireText(inputObj){
     var query = inputObj.sourceText;
     var from = inputObj.sourceType;
     var to = inputObj.transType;
-    var date = new Date().getTime();
+    var salt = new Date().getTime();
+    var curtime=Math.round(new Date().getTime()/1000);
     var requireText = APP_KEY 
                     + getInput(query) 
-                    + date 
-                    + Math.round(date/1000) 
+                    + salt
+                    + curtime 
                     + APP_SECRET;
+    console.log(requireText);
     var sign = sha256(requireText);
-
+    
     REQUEST_JSON.q = query;
     REQUEST_JSON.from = from;
     REQUEST_JSON.to = to;
     REQUEST_JSON.sign = sign;
-    REQUEST_JSON.salt = date;
+    REQUEST_JSON.salt = salt;
     REQUEST_JSON.sign = sign;
+    REQUEST_JSON.curtime = curtime;
+    REQUEST_JSON.appKey = APP_KEY;
     return REQUEST_JSON;
 }
 
@@ -63,10 +68,11 @@ function generateRequireText(inputObj){
  */
 function visitAPI(requireObj) {
     console.log(JSON.stringify(requireObj))
+    console.log(API_URL);
     $.ajax({
         url: API_URL
         , data: requireObj
-        , type: 'POST'
+        , type: 'post'
         , dataType: 'jsonp'
         , success: function (result) {
             showInPage(result);

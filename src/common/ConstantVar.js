@@ -2,8 +2,8 @@
  *   系统定义代码常量
  *******************************************************************/
 // 接口地址
-var HTTP_API_URL = 'http://openapi.youdao.com/openapi';
-var HTTPS_API_URL = 'https://openapi.youdao.com/openapi';
+var HTTP_API_URL = 'http://openapi.youdao.com/api';
+var HTTPS_API_URL = 'https://openapi.youdao.com/api';
 
 // TODONZ 密钥
 var APP_KEY = '7cb4b03aa3429d9c';
