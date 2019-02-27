@@ -5,7 +5,9 @@
   "main": "main.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "electron ."
+    "start": "electron .",
+    "pack": "electron-packager . YouDaoTransApp --win --out ../myClient --arch=x64 --app-version=0.0.1 --electron-version=2.0.0"
+
   },
   "repository": {
     "type": "git",
